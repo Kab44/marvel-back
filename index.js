@@ -3,7 +3,7 @@ const app = express();
 const axios = require("axios");
 
 const externalApi = "https://lereacteur-marvel-api.herokuapp.com";
-const apiKey = "QmD64gFUgsDCGuIK";
+const apiKey = process.env.API_KEY || "QmD64gFUgsDCGuIK";
 
 app.get("/comics", function (req, res) {
   console.log("get comics", req.query);
@@ -56,4 +56,4 @@ app.get("/comics/:charId", function (req, res) {
     });
 });
 
-app.listen(3000);
+app.listen(process.env.PORT || 3000);
